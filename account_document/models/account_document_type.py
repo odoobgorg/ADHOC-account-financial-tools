@@ -6,19 +6,25 @@ from openerp import fields, models, api
 class AccountDocmentType(models.Model):
     _name = 'account.document.type'
     _description = 'Account Document Type'
+    _order = 'sequence, id asc'
 
     _get_localizations = (
         lambda self, *args, **kwargs: self.env[
             'res.company']._get_localizations(*args, **kwargs))
 
+    sequence = fields.Integer(
+        default=10,
+        required=True,
+    )
     localization = fields.Selection(
         _get_localizations,
         'Localization',
         help='If you set a localization here then it will be available only '
-        'for companies of this localization'
+        'for companies of this localization',
     )
     name = fields.Char(
         'Name',
+        required=True,
     )
     company_id = fields.Many2one(
         'res.company',
@@ -46,6 +52,8 @@ class AccountDocmentType(models.Model):
         ('credit_note', 'Credit Notes'),
         ('ticket', 'Ticket'),
         ('receipt_invoice', 'Receipt Invoice'),
+        ('inbound_payment_voucher', 'Inbound Payment Voucer'),
+        ('outbound_payment_voucher', 'Outbound Payment Voucer'),
         ('in_document', 'In Document'),
     ],
         string='Internal Type',
@@ -68,6 +76,27 @@ class AccountDocmentType(models.Model):
         'Active',
         default=True
     )
+    validator_id = fields.Many2one(
+        'base.validator',
+        'Validator',
+    )
+
+    @api.multi
+    def validate_document_number(self, document_number):
+        self.ensure_one()
+        if self.validator_id:
+            return self.validator_id.validate_value(document_number)
+        return False
+
+    @api.multi
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = rec.name
+            if rec.code:
+                name = '(%s) %s' % (rec.code, name)
+            result.append((rec.id, name))
+        return result
 
     @api.multi
     def get_document_sequence_vals(self, journal):

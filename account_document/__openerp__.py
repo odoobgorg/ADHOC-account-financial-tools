@@ -7,6 +7,7 @@
     "category": "Accounting",
     "depends": [
         "account",
+        "base_validator",
     ],
     "data": [
         'view/account_journal_view.xml',
@@ -18,8 +19,13 @@
         'view/res_partner_view.xml',
         'view/report_invoice.xml',
         'view/account_chart_template_view.xml',
+        'view/account_payment_view.xml',
+        'view/account_payment_receiptbook_view.xml',
+        'data/account.document.type.csv',
+        'wizards/account_invoice_refund_view.xml',
         'res_config_view.xml',
         'security/ir.model.access.csv',
+        'security/security.xml',
     ],
     "demo": [
     ],
