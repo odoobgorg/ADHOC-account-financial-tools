@@ -2,32 +2,33 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-====================
-Journal Entry Helper
-====================
+=======================
+Journal Entries Chatter
+=======================
 
-This module adds two buttons in journals entries to allow you to set required balance for accounts and it will automatically create the move line for you
+Add chatter to journal entries
 
 Installation
 ============
 
 To install this module, you need to:
 
-#. Just install this module
+#. Just install it
 
 Configuration
 =============
 
 To configure this module, you need to:
 
-#. Go to ...
+#. Nothing no be done
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. Go to ...
+#. Go to Journal Entries
+#. Now you use chatter functionality on them
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot

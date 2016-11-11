@@ -6,14 +6,22 @@
 from openerp import models, fields
 
 
-class AccountAccountType(models.Model):
-    _inherit = 'account.account.type'
+# la idea es no modificarlos por lo cual no es tan relevante que no sea
+# traducible
+# class AccountAccountType(models.Model):
+#     _inherit = 'account.account.type'
+
+#     name = fields.Char(translate=False)
+
+
+class AccountTaxCode(models.Model):
+    _inherit = 'account.tax.group'
 
     name = fields.Char(translate=False)
 
 
-class AccountTaxCode(models.Model):
-    _inherit = 'account.tax.code'
+class AccountTax(models.Model):
+    _inherit = 'account.tax'
 
     name = fields.Char(translate=False)
 
@@ -23,15 +31,3 @@ class AccountPaymentTerm(models.Model):
 
     name = fields.Char(translate=False)
     note = fields.Char(translate=False)
-
-
-class AccountTax(models.Model):
-    _inherit = 'account.tax'
-
-    name = fields.Char(translate=False)
-
-
-class AccountAccount(models.Model):
-    _inherit = 'account.account'
-
-    name = fields.Char(translate=False)

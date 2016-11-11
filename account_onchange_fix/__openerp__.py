@@ -19,7 +19,6 @@
 #
 ##############################################################################
 {
-    'active': False,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
@@ -31,8 +30,8 @@
     'description': '''
 Account onchange Fix
 ====================
-We depreceate this module as we can not remember why it exists.
-It also has a very bad implementation as it overwrites some methods
+Solves this issue https://github.com/odoo/odoo/issues/2255
+NOTA: todavia no migramos para v9, espermaos a que alguien reporte el error
 ''',
     'installable': False,
     'name': 'Account onchange Fix',
